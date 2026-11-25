@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clemira Aren: Healthy Sweet, Healthy Life</title>
+<meta name="description" content="Gula aren murni dari air nira Kabupaten Bone dalam empat varian: cair 1000 ml, bubuk 400 g, blok 400 g, dan cube 150 g. Tanpa pengawet, dikemas di Makassar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<style>
+  :root{
+    --paper:#f4efe3;
+    --tile:#ffffff;
+    --ink:#12140f;
+    --ink-2:#5c6157;
+    --green:#0d6b39;
+    --green-deep:#08452a;
+    --amber:#7d4c17;
+    --red:#9b2c2c;
+    --rule:#e2dbc9;
+    --sans:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+    --serif:Fraunces,Georgia,serif;
+    --pad:clamp(18px,5vw,40px);
+    --radius:18px;
+    --shadow-border:0 0 0 1px oklch(0 0 0 / .06), 0 1px 2px -1px oklch(0 0 0 / .06), 0 2px 4px 0 oklch(0 0 0 / .04);
+    --shadow-border-hover:0 0 0 1px oklch(0 0 0 / .08), 0 1px 2px -1px oklch(0 0 0 / .08), 0 2px 4px 0 oklch(0 0 0 / .06);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  .lenis.lenis-stopped{overflow:hidden}
+  [hidden]{display:none!important}
+  .mini:disabled,.pill:disabled{opacity:.5;cursor:not-allowed}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.47;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-.01em;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.03}
+  p{margin:0}
+  button{font:inherit;color:inherit;letter-spacing:inherit}
+  a[href],button,label[for]{cursor:pointer;-webkit-tap-highlight-color:transparent}
+  :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:4px}
+
+  .wrap{width:min(1220px,100% - 2*var(--pad));margin-inline:auto}
+
+  /* bilah atas tipis: satu garis, tanpa bayangan */
+  html{scroll-padding-top:80px}
+  .bar{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{display:flex;align-items:center;gap:18px;min-height:56px}
+  .brand{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;min-height:44px}
+  .brand img{height:38px;width:auto;object-fit:contain}
+  .brand b{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--green-deep);letter-spacing:-.01em}
+  .nav{display:flex;gap:26px;margin:0 auto;font-size:.82rem;font-weight:500;color:var(--ink-2)}
+  .nav a{text-decoration:none;padding:8px 0}
+  .nav a:focus-visible{color:var(--ink)}
+  .bar-act{display:flex;gap:8px;align-items:center;flex-shrink:0}
+  .pill{
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    min-height:44px;padding:0 16px;border-radius:999px;border:1px solid transparent;
+    background:var(--green-deep);color:#fff;font-size:.82rem;font-weight:600;text-decoration:none;
+    transition:background-color .18s ease,color .18s ease,border-color .18s ease;
+  }
+  .pill-line{background:transparent;color:var(--ink);border-color:var(--rule)}
+  .bag-n{display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--green);color:#fff;font-size:.7rem;font-weight:700}
+  .bag-n[hidden]{display:none}
+  .burger{display:none;min-width:44px;min-height:44px;background:transparent;border:1px solid var(--rule);border-radius:999px;align-items:center;justify-content:center;font-size:.9rem}
+  #openPanel{background:var(--red);border-color:var(--red);color:#fff}
+  #openPanel .bag-n{background:#fff;color:var(--red)}
+
+  /* judul besar tengah */
+  .lead{text-align:center;padding:clamp(34px,6vw,74px) 0 clamp(18px,2.6vw,30px)}
+  .lead h1{font-size:clamp(2.4rem,6.6vw,4.9rem);max-width:19ch;margin-inline:auto;text-wrap:balance}
+  .lead h1 em{font-style:normal;color:var(--green);white-space:nowrap}
+  .lead p{margin:18px auto 0;max-width:46ch;color:var(--ink-2);font-size:clamp(1rem,1.5vw,1.18rem)}
+  .links{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;align-items:center;margin-top:22px}
+  .links .pill{text-decoration:none;padding:0 24px;min-height:46px;background:var(--green-deep);color:#fff;border:1px solid var(--green-deep)}
+  .links a,.links button{
+    background:none;border:0;padding:10px 0;min-height:44px;display:inline-flex;align-items:center;
+    font-size:.95rem;font-weight:600;color:var(--green-deep);
+    text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;
+  }
+
+  /* tile produk */
+  .stage{margin:0 0 clamp(10px,1.4vw,18px)}
+  .tile{background:var(--tile);border-radius:var(--radius);overflow:hidden;position:relative}
+  .tile-full{height:clamp(460px,50vw,600px);display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(24px,3.4vw,38px) 0 clamp(18px,2.2vw,26px)}
+  .tile-full .shot{width:100%;flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:center;margin-top:clamp(12px,2vw,22px);overflow:hidden}
+  .tile-full .shot img{width:auto;max-width:min(100%,620px);height:100%;object-fit:contain;object-position:bottom;border-radius:16px 16px 0 0}
+  .tile h2{font-size:clamp(1.7rem,3.4vw,2.6rem);max-width:26ch}
+  .tile p{margin:12px auto 0;max-width:46ch;color:var(--ink-2);font-size:1rem}
+  .kicker{font-size:.78rem;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+  .w{display:inline-block}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,22px);margin-bottom:clamp(10px,1.4vw,18px)}
+  .card{
+    background:var(--tile);border:1px solid transparent;border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow-border);transition:box-shadow .15s ease-out;
+    display:flex;flex-direction:column;
+  }
+  .card .shot{
+    background:#eae2d2;padding:clamp(14px,2vw,22px);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;height:clamp(190px,20vw,240px);flex:none;
+  }
+  .card .shot img{max-height:100%;width:auto;max-width:100%;object-fit:contain;transition:transform .5s cubic-bezier(.22,.7,.24,1)}
+  .card .shot span{font-size:.76rem;letter-spacing:.02em;color:#5c5346;font-weight:600;text-align:center}
+  .step button:disabled{opacity:.45;cursor:not-allowed}
+  .card .info{padding:clamp(15px,1.9vw,21px);display:grid;gap:9px;align-content:start;flex:1}
+  .card .head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .card .head h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.1rem,1.7vw,1.32rem);line-height:1.14;letter-spacing:-.01em;color:var(--green-deep)}
+  .card .badge{flex-shrink:0;padding:4px 9px;border-radius:999px;background:#dde5d5;color:var(--green-deep);font-size:.66rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+  .card .desc{color:var(--ink-2);font-size:.9rem;line-height:1.45}
+  .card .foot{display:flex;align-items:flex-end;justify-content:space-between;gap:10px 12px;flex-wrap:wrap;padding-top:11px;margin-top:auto;border-top:1px solid var(--rule)}
+  .card .info{min-width:0}
+  .card .foot small{display:block;font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px}
+  .card .foot b{font-family:var(--serif);font-weight:600;font-size:clamp(1.1rem,1.7vw,1.32rem);color:var(--amber);letter-spacing:-.01em}
+  .card .pesan{
+    margin-top:12px;min-height:44px;width:100%;border:1px solid var(--green-deep);border-radius:10px;
+    background:transparent;color:var(--green-deep);font-size:.86rem;font-weight:600;
+    transition:background-color 160ms var(--ease-out),color 160ms var(--ease-out);
+  }
+  .step{display:inline-flex;align-items:center;border:1px solid var(--rule);border-radius:10px;background:#fff;height:44px}
+  .step button{width:40px;height:42px;border:0;background:transparent;font-size:1rem;font-weight:700;color:var(--ink-2)}
+  .step button[data-plus]{background:var(--green-deep);color:#fff;width:42px;height:42px;margin:1px;border-radius:8px}
+  .step span{min-width:26px;text-align:center;font-size:.85rem;font-weight:700}
+  .total-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:12px 2px 0;border-top:1px solid var(--rule);font-size:.9rem;font-weight:600}
+  .total-row b{font-family:var(--serif);font-size:1.2rem;color:var(--green-deep);letter-spacing:-.01em}
+
+  /* tile gelap */
+  .dark{background:var(--green-deep);color:#f2f6ec;border-radius:var(--radius);padding:clamp(40px,6vw,80px) 0 clamp(24px,3vw,38px);text-align:center;overflow:hidden;margin-bottom:clamp(10px,1.4vw,18px)}
+  .dark h2{font-size:clamp(1.8rem,3.8vw,3rem);max-width:20ch;margin-inline:auto;color:#fff}
+  .dark p{margin:14px auto 0;max-width:44ch;color:#c9d8bf}
+  .dark .shot{margin:clamp(22px,3vw,34px) 0 0;display:flex;justify-content:center;align-items:flex-end;background:#fff;border-radius:14px 14px 0 0;padding:clamp(18px,2.4vw,28px) clamp(16px,2.4vw,26px) 0;min-height:clamp(260px,30vw,400px)}
+  .dark .shot img{width:auto;max-width:min(100%,520px);max-height:clamp(260px,30vw,400px);object-fit:contain;object-position:bottom}
+  .dark .shot-lebar{
+    margin:clamp(24px,3.4vw,38px) auto 0;max-width:860px;width:calc(100% - clamp(32px,7vw,56px));
+    background:#06301f;border-radius:14px;overflow:hidden;aspect-ratio:3/2;min-height:0;padding:0;display:block;
+  }
+  .dark .shot-lebar img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
+  .dark .cap-kecil{margin:10px auto 0;max-width:860px;width:calc(100% - clamp(32px,7vw,56px));text-align:left;font-size:.78rem;line-height:1.45;letter-spacing:.03em;color:#c3d3ba}
+
+  /* strip angka */
+  .figs{display:grid;grid-template-columns:repeat(4,1fr);margin:clamp(26px,4vw,44px) 0 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .figs>div{text-align:center;padding:22px 10px 24px;border-right:1px solid var(--rule)}
+  .figs>div:last-child{border-right:0}
+  .figs b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,2.4vw,2.1rem);color:var(--green-deep);letter-spacing:-.02em}
+  .figs span{display:block;margin-top:6px;font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2);font-weight:600}
+
+  /* tahap */
+  .stages{padding:clamp(46px,7vw,88px) 0}
+  .stages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
+  .stage-i{border-top:1px solid var(--rule);padding-top:20px}
+  .stage-i b{display:block;font-size:.8rem;letter-spacing:.12em;color:var(--amber);font-weight:700}
+  .stage-i h3{margin-top:10px;font-size:clamp(1.1rem,1.6vw,1.32rem);letter-spacing:-.02em}
+  .stage-i p{margin-top:8px;color:var(--ink-2);font-size:.96rem;max-width:34ch}
+
+  /* profil */
+  .profil{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:start;padding:clamp(40px,6vw,84px) 0 clamp(30px,4vw,50px)}
+  .profil h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.4vw,3.3rem);line-height:.99;letter-spacing:-.02em;max-width:22ch}
+  .profil h2 em{font-style:italic;color:var(--green)}
+  .profil .intro{margin-top:18px;color:var(--ink-2);font-size:1rem;max-width:46ch}
+  .spek{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin:clamp(22px,3vw,34px) 0 0}
+  .spek dt{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:700}
+  .spek dd{margin:5px 0 0;font-size:.94rem;color:var(--ink-2);line-height:1.4}
+  .panel-foto{background:#ede7da;border:1px solid #dcd3be;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;padding:clamp(22px,4vw,42px);height:clamp(320px,36vw,480px)}
+  .panel-foto img{max-height:100%;max-width:100%;height:auto;width:auto;object-fit:contain}
+  .cap{display:flex;justify-content:space-between;gap:12px;margin-top:13px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+
+  /* rincian */
+  .detail{background:var(--tile);border-radius:var(--radius);padding:clamp(28px,4vw,44px);margin-bottom:clamp(28px,4vw,44px)}
+  .detail dl{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.4vw,30px);margin:0}
+  .detail dt{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);font-weight:700}
+  .detail dd{margin:6px 0 0;font-size:.96rem;color:var(--ink-2)}
+
+  /* kaki */
+  .foot{padding:clamp(34px,5vw,56px) 0 36px;border-top:1px solid var(--rule)}
+  .foot-in{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:clamp(20px,3vw,40px)}
+  .foot h2{font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--green-deep);letter-spacing:-.01em}
+  .foot p{margin-top:8px;color:var(--ink-2);font-size:.88rem;max-width:36ch}
+  .foot ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;font-size:.88rem}
+  .foot a{text-decoration:none;color:var(--ink-2)}
+  .fine{margin-top:30px;padding-top:14px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;font-size:.76rem;color:var(--ink-2)}
+
+  /* panel pesanan */
+  .veil{position:fixed;inset:0;background:rgba(18,20,15,.42);z-index:60;display:none}
+  .veil[data-open=true]{display:block}
+  .panel{
+    position:fixed;top:0;right:0;bottom:0;z-index:61;width:min(430px,100%);
+    background:#fff;display:flex;flex-direction:column;
+    transform:translateX(100%);transition:transform .26s cubic-bezier(.22,.7,.24,1);
+    box-shadow:-1px 0 0 var(--rule);overscroll-behavior:contain;
+  }
+  .panel[data-open=true]{transform:none}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--rule)}
+  .panel-head h2{font-size:1.05rem}
+  .x{width:44px;height:44px;border:1px solid var(--rule);border-radius:999px;background:transparent;font-size:1rem;line-height:1}
+  .panel-body{overflow-y:auto;overscroll-behavior:contain;padding:18px 20px;display:grid;gap:14px;align-content:start}
+  .panel-foot{padding:14px 20px;border-top:1px solid var(--rule);display:grid;gap:8px}
+  .panel .pill{width:100%}
+
+  .lines{display:grid;gap:8px}
+  .line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.9rem}
+  .line b{display:block;font-weight:600}
+  .line small{display:block;color:var(--ink-2);font-size:.78rem}
+  .qty{display:inline-flex;align-items:center;border:1px solid var(--rule);border-radius:999px;overflow:hidden;height:44px;background:#fff}
+  .qty button{width:44px;height:44px;border:0;background:transparent;font-weight:700;font-size:1rem}
+  .qty span{flex:1;text-align:center;font-size:.85rem;font-weight:700;min-width:34px}
+  .empty{padding:18px;border:1px dashed var(--rule);border-radius:12px;color:var(--ink-2);font-size:.88rem;text-align:center}
+
+  .f{display:grid;gap:5px}
+  .f label{font-size:.8rem;font-weight:600}
+  .f .opt{font-weight:400;color:var(--ink-2)}
+  .f input,.f select,.f textarea{width:100%;padding:11px 12px;border:1px solid var(--rule);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:.92rem}
+  .f textarea{resize:vertical}
+  .preview{padding:12px;border:1px solid var(--rule);border-radius:10px;background:#fbfaf7;font-size:.8rem;white-space:pre-wrap;color:var(--ink-2);max-height:150px;overflow-y:auto}
+  .warn{padding:11px 12px;border-radius:10px;background:#fdf1e7;color:#6f3a0d;font-size:.79rem;line-height:1.5}
+  .done{padding:10px 12px;border-radius:10px;background:#e9f3ec;color:#08452a;font-size:.8rem}
+
+  /* lembar bayar */
+  .pay{position:fixed;inset:0;z-index:70;display:none}
+  .pay[data-open=true]{display:flex;align-items:flex-end;justify-content:center}
+  .pay-veil{position:absolute;inset:0;background:rgba(18,20,15,.52)}
+  .pay-box{
+    position:relative;background:#fff;width:min(470px,100%);max-height:94vh;overflow-y:auto;overscroll-behavior:contain;
+    border-radius:16px 16px 0 0;padding:0 18px 22px;display:grid;gap:12px;align-content:start;
+  }
+  .pay-head{
+    position:sticky;top:0;z-index:1;background:#fff;display:flex;align-items:center;justify-content:space-between;
+    gap:12px;margin:0 -18px;padding:14px 18px;border-bottom:1px solid var(--rule);
+  }
+  .pay-head h2{font-size:1.02rem}
+  .pay-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid var(--rule);border-radius:12px}
+  .pay-row b{font-size:.95rem;display:block}
+  .pay-row small{display:block;color:var(--ink-2);font-size:.74rem;margin-bottom:2px}
+  .mini{min-height:44px;padding:0 14px;border:1px solid var(--rule);border-radius:999px;background:#fff;font-size:.8rem;font-weight:600;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink)}
+  .qris{display:grid;gap:8px;padding:12px;border:1px solid var(--rule);border-radius:20px;text-align:center;justify-items:center}
+  .qris img{width:100%;max-width:250px;aspect-ratio:1;object-fit:contain;background:#fbfaf7;border-radius:8px}
+  .qris-fallback{display:grid;place-content:center;gap:4px;width:100%;max-width:250px;aspect-ratio:1;border:1px dashed var(--rule);border-radius:8px;color:var(--ink-2);font-size:.78rem;padding:12px}
+  .drop{display:grid;gap:4px;padding:14px;border:1px dashed var(--rule);border-radius:12px;background:#fbfaf7;text-align:center;font-size:.82rem;color:var(--ink-2)}
+  .drop input{width:100%;font:inherit;font-size:.78rem;margin-top:6px}
+  .thumb{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid var(--rule);border-radius:12px;font-size:.78rem}
+  .thumb img{width:56px;height:56px;object-fit:cover;border-radius:8px;border:1px solid var(--rule)}
+  .thumb b{display:block;font-weight:600}
+  .thumb small{color:var(--ink-2)}
+  .err{color:#8a2c0d;font-size:.78rem;line-height:1.5}
+  .pay-thanks{display:grid;gap:10px;padding-top:4px}
+  .pay-thanks h3{font-size:1.15rem}
+  @media (min-width:640px){
+    .pay[data-open=true]{align-items:center;padding:20px}
+    .pay-box{border-radius:16px;max-height:88vh}
+  }
+
+  @media (max-width:900px){
+    .grid,.stages-grid,.profil{grid-template-columns:1fr}
+    .detail dl{grid-template-columns:1fr 1fr}
+    .foot-in{grid-template-columns:1fr}
+    .nav{display:none}
+    .burger{display:inline-flex}
+    .nav.open{
+      display:flex;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;
+      margin:0;padding:6px var(--pad) 14px;background:var(--paper);border-bottom:1px solid var(--rule);
+    }
+    .nav.open a{padding:14px 0;border-bottom:1px solid var(--rule);font-size:.95rem}
+    .bar-in{gap:10px}
+    .bar-act{margin-left:auto}
+  }
+  @media (max-width:600px){
+    .figs{grid-template-columns:1fr 1fr}
+    .figs>div:nth-child(2n){border-right:0}
+    .figs>div:nth-child(n+3){border-top:1px solid var(--rule)}
+    .detail dl{grid-template-columns:1fr}
+    .spek{grid-template-columns:1fr}
+    .foot ul li a{display:inline-block;padding-block:12px}
+    .card .shot{height:210px}
+  }
+  @media (hover:hover){
+    #openPanel:hover{background:#7f2323;border-color:#7f2323}
+    .nav a:hover{color:var(--ink)}
+    .pill:hover{background:#063d24}
+    .pill-line:hover{background:#fff;border-color:var(--green);color:var(--green-deep)}
+    .links .pill:hover{background:#063d24;border-color:#063d24}
+    .links a:hover,.links button:hover{color:var(--green);text-decoration-thickness:2px}
+    .card:hover{box-shadow:var(--shadow-border-hover)}
+    .card:hover .shot img{transform:scale(1.03)}
+    .card .pesan:hover{background:var(--green-deep);color:#fff}
+    .step button:hover{color:var(--green-deep)}
+    .step button[data-plus]:hover{background:#063d24;color:#fff}
+    .mini:hover{border-color:var(--green);color:var(--green-deep)}
+    .qty button:hover{background:#f4efe3}
+    .foot a:hover{color:var(--green-deep);text-decoration:underline;text-underline-offset:3px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="#atas" aria-label="Clemira Aren, ke bagian atas halaman">
+      <img src="./assets/logo-clemira.png" alt="" width="26" height="26">
+      <b>Clemira Aren</b>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Bagian halaman">
+      <a href="#profil">Profil</a>
+      <a href="#asal">Asal nira</a>
+      <a href="#katalog">Katalog</a>
+      <a href="#pesan">Cara pesan</a>
+    </nav>
+
+    <div class="bar-act">
+      <button class="pill pill-line" type="button" id="openPanel" aria-haspopup="dialog">
+        <span>Pesan</span><span class="bag-n num" id="bagCount">0</span>
+      </button>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Buka daftar bagian">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="atas">
+
+  <section class="lead">
+    <div class="wrap">
+      <h1>Healthy sweet, <em>healthy life</em>.</h1>
+      <p>Gula aren murni dari nira Kabupaten Bone dalam empat varian, diolah tanpa pengawet dan tanpa pewarna, lalu dikemas di Makassar.</p>
+      <div class="links">
+        <a class="pill" href="#katalog">Lihat katalog</a>
+        <button type="button" data-ask="Halo Clemira Aren, saya ingin menanyakan stok dan harga gula aren.">Tanya stok lewat WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="stage">
+      <div class="tile tile-full">
+        <p class="kicker">Gula Aren Liquid</p>
+        <h2>Tuang, aduk, selesai.</h2>
+        <p>Botol 1000 ml untuk es kopi susu dan minuman dingin. Takarnya cepat karena sudah cair.</p>
+        <div class="shot">
+          <img src="./assets/gula-aren-liquid-1000ml.png" alt="Botol Clemira Gula Aren Liquid 1000 ml" width="408" height="612" fetchpriority="high">
+        </div>
+        <div class="links">
+          <button type="button" data-order="cair-1000">Pesan botol 1000 ml</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="figs">
+      <div><b class="num">1000</b><span>ml, cair</span></div>
+      <div><b class="num">400</b><span>g, bubuk</span></div>
+      <div><b class="num">400</b><span>g, blok</span></div>
+      <div><b class="num">150</b><span>g, cube</span></div>
+    </div>
+
+    <section class="stage" id="katalog" style="margin-top:clamp(26px,4vw,44px)">
+      <div class="grid" id="rows"></div>
+    </section>
+
+    <section class="stage" id="asal">
+      <div class="dark">
+        <div class="wrap" style="width:min(760px,100%)">
+          <h2>Dua kali penyaringan, satu rasa yang tinggal.</h2>
+          <p>Nira dimasak sampai mengental lalu disaring dua kali untuk membuang ampas dan kerak. Yang tersisa hanya rasa karamel dari nira.</p>
+          <div class="links">
+            <a href="#profil">Baca profil</a>
+          </div>
+        </div>
+        <div class="shot shot-lebar">
+          <img src="./assets/proses-penyaringan.webp" alt="Ilustrasi penyaringan nira aren: cairan nira dituang lewat kain ke wajan di atas tungku kayu" width="1200" height="800" loading="lazy">
+        </div>
+        <p class="cap-kecil">Ilustrasi proses penyaringan nira, bukan foto lokasi produksi Clemira.</p>
+      </div>
+    </section>
+
+    <section class="stages">
+      <div class="stages-grid">
+        <article class="stage-i">
+          <b class="num">01</b>
+          <h3>Penyadapan pagi</h3>
+          <p>Nira dipanen pagi hari saat rasanya masih bersih. Ditampung terlalu lama, rasanya berubah asam.</p>
+        </article>
+        <article class="stage-i">
+          <b class="num">02</b>
+          <h3>Dimasak dan disaring</h3>
+          <p>Dimasak sampai mengental, disaring dua kali untuk membuang ampas dan kerak.</p>
+        </article>
+        <article class="stage-i">
+          <b class="num">03</b>
+          <h3>Dikemas di Makassar</h3>
+          <p>Blok dicetak 400 g, bubuk masuk pouch zip-lock, cair ke botol PET 1000 ml.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="profil">
+      <div class="profil">
+        <div>
+          <h2>Nira dari Bone, <em>dikemas di Makassar</em>.</h2>
+          <p class="intro">Clemira Aren mengolah air nira aren dari penyadap di Kabupaten Bone menjadi gula aren tanpa pengawet dan tanpa pewarna. Penyaringan dua kali membuang ampas dan kerak, sisanya rasa karamel dari nira.</p>
+          <dl class="spek">
+            <div><dt>Nama usaha</dt><dd>Clemira Aren</dd></div>
+            <div><dt>Lokasi produksi</dt><dd>Makassar, Sulawesi Selatan</dd></div>
+            <div><dt>Bahan baku</dt><dd>Air nira aren, Kabupaten Bone, Sulawesi Selatan</dd></div>
+            <div><dt>Izin edar</dt><dd class="num">P-IRT 2097371020148-26</dd></div>
+            <div><dt>Legalitas</dt><dd>Halal dan SNI pada varian blok</dd></div>
+            <div><dt>Varian</dt><dd>Empat: liquid, bubuk, blok, cube</dd></div>
+          </dl>
+        </div>
+        <div>
+          <div class="panel-foto">
+            <img src="./assets/logo-clemira.png" alt="Logo Clemira Aren dengan mark daun merah dan hijau" width="471" height="529" loading="lazy">
+          </div>
+          <p class="cap"><span>Clemira Aren</span><span>Makassar, Sulawesi Selatan</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pesan" style="padding-bottom:clamp(30px,4vw,50px)">
+      <div class="lead" style="padding-top:0">
+        <h2 style="font-size:clamp(1.6rem,3vw,2.3rem)">Pesan tanpa mengetik ulang.</h2>
+        <p>Tambahkan varian dari katalog, isi jumlah dan kota tujuan, lalu kirim lewat WhatsApp. Rincian produk tersusun otomatis.</p>
+        <div class="links">
+          <button type="button" id="openPanel2">Buka daftar pesanan</button>
+          <a href="https://instagram.com/Clemira_Aren" target="_blank" rel="noopener">Instagram @Clemira_Aren</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <h2>Clemira Aren</h2>
+        <p>Gula aren dari air nira Kabupaten Bone, diolah dan dikemas di Makassar. Tanpa pengawet dan tanpa pewarna.</p>
+      </div>
+      <div>
+        <ul>
+          <li><a href="#katalog">Katalog</a></li>
+          <li><a href="#asal">Tahap pengolahan</a></li>
+          <li><a href="#profil">Profil dan legalitas</a></li>
+          <li><a href="#pesan">Cara pesan</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><a href="https://instagram.com/Clemira_Aren" target="_blank" rel="noopener">Instagram @Clemira_Aren</a></li>
+          <li><a href="#pesan">Tanya stok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">
+      <span>Makassar, Sulawesi Selatan</span>
+      <span class="num">P-IRT 2097371020148-26</span>
+    </div>
+  </div>
+</footer>
+
+<div class="veil" id="veil" data-open="false"></div>
+
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle" data-open="false" data-lenis-prevent>
+  <div class="panel-head">
+    <h2 id="panelTitle">Daftar pesanan</h2>
+    <button class="x" type="button" id="closePanel" aria-label="Tutup daftar pesanan">&#10005;</button>
+  </div>
+
+  <div class="panel-body">
+    <div id="lines" class="lines"></div>
+    <p class="total-row" id="panelTotal" hidden><span>Total</span><b class="num" id="panelTotalNum">Rp0</b></p>
+
+    <div class="f">
+      <label for="nama">Nama atau nama usaha <span class="opt">(boleh dikosongkan)</span></label>
+      <input id="nama" type="text" autocomplete="name" placeholder="Contoh: Rina, Kedai Kopi Ratulangi">
+    </div>
+
+    <div class="f">
+      <label for="jenis">Kebutuhan</label>
+      <select id="jenis">
+        <option>Rumah tangga</option>
+        <option>Kedai minuman atau kafe</option>
+        <option>Reseller atau grosir</option>
+      </select>
+    </div>
+
+    <div class="f">
+      <label for="kota">Kota tujuan <span class="opt">(boleh dikosongkan)</span></label>
+      <input id="kota" type="text" autocomplete="address-level2" placeholder="Contoh: Makassar">
+    </div>
+
+    <div class="f">
+      <label for="catatan">Catatan <span class="opt">(boleh dikosongkan)</span></label>
+      <textarea id="catatan" rows="2" placeholder="Contoh: minta hitungan kirim ke Gowa"></textarea>
+    </div>
+
+    <div>
+      <p class="kicker" style="margin-bottom:5px">Isi pesan</p>
+      <div class="preview" id="preview" aria-live="polite"></div>
+    </div>
+
+    <p class="warn" id="noNumber" hidden>Nomor WhatsApp admin belum dipasang di situs ini. Salin isi pesan di atas lalu kirim lewat Instagram @Clemira_Aren, atau minta nomor admin dari akun tersebut.</p>
+    <p class="done" id="copied" hidden>Teks pesanan sudah tersalin.</p>
+  </div>
+
+  <div class="panel-foot">
+    <button class="pill" type="button" id="send">Buka WhatsApp</button>
+    <button class="pill pill-line" type="button" id="openPay">Bayar via QRIS atau GoPay</button>
+    <button class="pill pill-line" type="button" id="copy">Salin teks pesanan</button>
+  </div>
+</aside>
+
+<div class="pay" id="pay" data-open="false">
+  <div class="pay-veil" id="payVeil"></div>
+  <div class="pay-box" role="dialog" aria-modal="true" aria-labelledby="payTitle" data-lenis-prevent>
+    <div class="pay-head">
+      <h2 id="payTitle">Bayar pesanan</h2>
+      <button class="x" type="button" id="closePay" aria-label="Tutup jendela pembayaran">&#10005;</button>
+    </div>
+
+    <div id="payBody" style="display:grid;gap:12px">
+      <div class="pay-row">
+        <div><small>Kode pesanan</small><b class="num" id="payCode">#CLM-0000-0000</b></div>
+        <button class="mini" type="button" id="copyCode">Salin kode</button>
+      </div>
+      <p class="err" id="codeNote">Kode ini dibuat di perangkat ini dan belum tercatat di admin. Sebutkan kode yang sama saat mengirim bukti.</p>
+
+      <div class="pay-row">
+        <div><small>Total tagihan</small><b class="num" id="payTotal">-</b></div>
+        <button class="mini" type="button" id="copyNominal">Salin nominal</button>
+      </div>
+      <p class="err" id="priceNote" hidden>Harga belum dipasang di situs ini, jadi nominal tidak ditampilkan. Minta nominal ke admin lewat WhatsApp sebelum membayar.</p>
+
+      <div class="qris">
+        <p class="kicker" style="margin:0">QRIS Clemira</p>
+        <img id="qrisImg" src="./assets/qris-clemira.jpg" alt="QRIS Clemira Aren untuk pembayaran via GoPay atau m-banking" width="600" height="600">
+        <div class="qris-fallback" id="qrisFallback" hidden>QRIS belum dipasang di situs ini. Minta gambar QRIS ke admin lewat WhatsApp.</div>
+        <a class="mini" id="qrisDl" href="./assets/qris-clemira.jpg" download="qris-clemira.jpg">Unduh QRIS</a>
+        <small style="color:var(--ink-2);font-size:.75rem">Unduh dulu, lalu unggah gambarnya dari galeri ke GoPay atau m-banking.</small>
+      </div>
+
+      <div class="pay-row" id="gopayRow" hidden>
+        <div><small>Nomor GoPay</small><b class="num" id="gopayNo">[NOMOR GOPAY]</b></div>
+        <button class="mini" type="button" id="copyGopay">Salin nomor</button>
+      </div>
+
+      <div class="drop">
+        <span>Bukti pembayaran: .jpg, .png, atau .webp, maksimal 5 MB</span>
+        <input type="file" id="bukti" accept="image/jpeg,image/png,image/webp">
+      </div>
+      <div class="thumb" id="thumb" hidden>
+        <img id="thumbImg" alt="Pratinjau bukti pembayaran yang dipilih" width="56" height="56">
+        <div><b class="num" id="thumbName"></b><small class="num" id="thumbSize"></small></div>
+      </div>
+      <p class="err" id="fileErr" hidden></p>
+
+      <button class="pill" type="button" id="sendBukti" style="width:100%">Kirim bukti pembayaran</button>
+      <button class="pill pill-line" type="button" id="remindAdmin" style="width:100%">Ingatkan admin via WhatsApp</button>
+    </div>
+
+    <div class="pay-thanks" id="payThanks" hidden>
+      <h3>Bukti siap dikirim</h3>
+      <p style="color:var(--ink-2);font-size:.9rem">Kode pesanan <b class="num" id="thanksCode"></b>. Kirim bukti ke admin lewat WhatsApp dengan menyebutkan kode ini.</p>
+      <p class="err" id="driveNote" hidden>Upload ke Google Drive belum tersambung karena endpoint belum dipasang. Bukti tetap dikirim manual lewat WhatsApp.</p>
+      <p class="err" id="thanksNote" hidden></p>
+      <button class="pill" type="button" id="thanksWa" style="width:100%">Kirim bukti lewat WhatsApp</button>
+      <button class="pill pill-line" type="button" id="thanksClose" style="width:100%">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Nomor WhatsApp admin: format internasional tanpa tanda plus, contoh "6281234567890".
+   Selama masih kosong, panel menampilkan keterangan apa adanya dan tombol kirim disembunyikan. */
+var WA_NUMBER = "6287817171158";
+
+/* Alamat Web App Google Apps Script untuk menyimpan bukti ke Drive.
+   Kosong berarti upload Drive belum aktif dan bukti dikirim manual lewat WhatsApp.
+   Cara memasang: lihat apps-script-upload.gs */
+var DRIVE_ENDPOINT = "https://script.google.com/macros/s/AKfycbz-pF4ppq4c_Fgly64FXHP9tKGhx4Vgjm_0fIlcZ4DbyETy_nye05w2HN9iaPcfHiguhQ/exec";
+
+/* Nomor GoPay admin, contoh "081234567890". Kosong berarti belum dipasang. */
+var GOPAY = "";
+
+
+var DATA = [
+  {
+    id: "cair-1000", code: "Cair", harga: 33000,
+    nama: "Gula Aren Liquid", berat: "1000 ml", kemasan: "Botol PET",
+    pakai: "Untuk es kopi susu, teh, dan minuman dingin.",
+    img: "./assets/gula-aren-liquid-1000ml.png", w: 408, h: 612
+  },
+  {
+    id: "bubuk-400", code: "Bubuk", harga: 32000,
+    nama: "Gula Aren Bubuk", berat: "400 g", kemasan: "Pouch zip-lock",
+    pakai: "Larut cepat di air panas maupun dingin.",
+    img: "./assets/gula-aren-bubuk-400g.png", w: 520, h: 479
+  },
+  {
+    id: "blok-400", code: "Blok", harga: 22000,
+    nama: "Gula Aren Blok", berat: "400 g", kemasan: "Bungkus rapat",
+    pakai: "Untuk kuah cendol dan kolak, disaring dua kali.",
+    img: "./assets/gula-aren-block-400g.png", w: 374, h: 667
+  },
+  {
+    id: "cube-150", code: "Cube", harga: 32000,
+    nama: "Gula Aren Cube", berat: "150 g", kemasan: "Jar bening",
+    pakai: "Kubus siap seduh untuk teh dan kopi.",
+    img: "./assets/Gula_aren_Cube.png", w: 374, h: 667
+  }
+];
+
+var chosen = {};
+var rowsEl = document.getElementById("rows");
+var linesEl = document.getElementById("lines");
+var previewEl = document.getElementById("preview");
+var bagCount = document.getElementById("bagCount");
+var panel = document.getElementById("panel");
+var veil = document.getElementById("veil");
+var noNumber = document.getElementById("noNumber");
+var copiedMsg = document.getElementById("copied");
+var sendBtn = document.getElementById("send");
+var lastFocus = null;
+
+function totalBaris(){
+  var t = 0;
+  for (var id in chosen){ t += chosen[id]; }
+  return t;
+}
+
+function sinkronBag(){
+  bagCount.textContent = totalBaris();
+  bagCount.hidden = totalBaris() === 0;
+}
+
+function sinkronKartu(){
+  var sel = document.querySelectorAll("[data-qty]");
+  for (var i = 0; i < sel.length; i++){
+    var n = chosen[sel[i].dataset.qty] || 0;
+    sel[i].textContent = n;
+    var minus = sel[i].parentNode.querySelector('[data-q="-"]');
+    if (minus){ minus.disabled = n === 0; }
+  }
+}
+
+function renderRows(){
+  rowsEl.innerHTML = DATA.map(function(p){
+    return '<article class="card" data-id="' + p.id + '">' +
+      '<div class="shot">' +
+        '<img src="' + p.img + '" alt="Kemasan ' + p.nama + ' ' + p.berat + '" width="' + p.w + '" height="' + p.h + '" loading="lazy">' +
+        '<span class="num">' + p.berat + ' &middot; ' + p.kemasan + '</span>' +
+      '</div>' +
+      '<div class="info">' +
+        '<div class="head"><h3>' + p.nama + '</h3><span class="badge">' + p.code + '</span></div>' +
+        '<p class="desc">' + p.pakai + '</p>' +
+        '<div class="foot">' +
+          '<div><small>Harga satuan</small><b class="num">' + rupiah(p.harga) + '</b></div>' +
+          '<div class="step" role="group" aria-label="Jumlah ' + p.nama + ' ' + p.berat + '">' +
+            '<button type="button" data-q="-" data-id="' + p.id + '" aria-label="Kurangi jumlah ' + p.nama + '"' + ((chosen[p.id] || 0) === 0 ? ' disabled' : '') + '>&#8722;</button>' +
+            '<span class="num" data-qty="' + p.id + '">' + (chosen[p.id] || 0) + '</span>' +
+            '<button type="button" data-q="+" data-id="' + p.id + '" aria-label="Tambah jumlah ' + p.nama + '" data-plus>+</button>' +
+          '</div>' +
+        '</div>' +
+        '<button type="button" class="pesan" data-pesan="' + p.id + '">Pesan ' + p.nama.replace('Gula Aren ', '') + '</button>' +
+      '</div>' +
+    '</article>';
+  }).join("");
+}
+
+function ubahQty(id, delta){
+  var next = (chosen[id] || 0) + delta;
+  if (next <= 0){ delete chosen[id]; } else { chosen[id] = next; }
+  sinkronBag();
+  sinkronKartu();
+  if (panel.dataset.open === "true"){ renderPanel(); }
+}
+
+function isiPesan(){
+  var dipilih = DATA.filter(function(p){ return chosen[p.id] > 0; });
+  var nama = document.getElementById("nama").value.trim();
+  var jenis = document.getElementById("jenis").value;
+  var kota = document.getElementById("kota").value.trim();
+  var catatan = document.getElementById("catatan").value.trim();
+  var baris = ["Halo Clemira Aren, saya ingin memesan:"];
+
+  if (dipilih.length){
+    dipilih.forEach(function(p, i){
+      baris.push((i + 1) + ". " + p.nama + " " + p.berat + " x" + chosen[p.id] +
+        " = " + rupiah(p.harga * chosen[p.id]));
+    });
+    var total = totalTagihan();
+    if (total !== null){ baris.push("Total: " + rupiah(total)); }
+  } else {
+    baris.push("(Saya ingin menanyakan stok dan harga varian yang tersedia.)");
+  }
+
+  baris.push("");
+  baris.push("Kebutuhan: " + jenis);
+  if (nama){ baris.push("Nama: " + nama); }
+  if (kota){ baris.push("Kota tujuan: " + kota); }
+  if (catatan){ baris.push("Catatan: " + catatan); }
+  return baris.join("\n");
+}
+
+function renderPanel(){
+  var dipilih = DATA.filter(function(p){ return chosen[p.id] > 0; });
+
+  if (!dipilih.length){
+    linesEl.innerHTML = '<p class="empty">Belum ada varian dipilih. Tambahkan dari katalog, atau kirim pesan untuk menanyakan stok.</p>';
+  } else {
+    linesEl.innerHTML = dipilih.map(function(p){
+      return '<div class="line">' +
+        '<div><b>' + p.nama + '</b><small class="num">' + p.berat + ', ' + p.kemasan + ' &middot; ' + rupiah(p.harga) + '</small></div>' +
+        '<div class="qty" role="group" aria-label="Jumlah ' + p.nama + ' ' + p.berat + '">' +
+          '<button type="button" data-q="-" data-id="' + p.id + '" aria-label="Kurangi jumlah ' + p.nama + '">&#8722;</button>' +
+          '<span class="num">' + chosen[p.id] + '</span>' +
+          '<button type="button" data-q="+" data-id="' + p.id + '" aria-label="Tambah jumlah ' + p.nama + '">+</button>' +
+        '</div>' +
+      '</div>';
+    }).join("");
+  }
+
+  var totalPanel = totalTagihan();
+  document.getElementById("panelTotal").hidden = totalPanel === null;
+  document.getElementById("panelTotalNum").textContent = totalPanel === null ? "Rp0" : rupiah(totalPanel);
+
+  previewEl.textContent = isiPesan();
+  noNumber.hidden = !!WA_NUMBER;
+  sendBtn.hidden = !WA_NUMBER;
+}
+
+function bukaPanel(pesanAwal){
+  lastFocus = document.activeElement;
+  panel.dataset.open = "true";
+  veil.dataset.open = "true";
+  if (pesanAwal){ document.getElementById("catatan").value = pesanAwal; }
+  renderPanel();
+  document.getElementById("closePanel").focus();
+}
+
+function tutupPanel(){
+  panel.dataset.open = "false";
+  veil.dataset.open = "false";
+  if (lastFocus && lastFocus.focus){ lastFocus.focus(); }
+}
+
+document.addEventListener("click", function(e){
+  var order = e.target.closest("[data-order]");
+  if (order){
+    var id = order.dataset.order;
+    chosen[id] = (chosen[id] || 0) + 1;
+    sinkronBag();
+    sinkronKartu();
+    bukaPanel("");
+    return;
+  }
+
+  var pesan = e.target.closest("[data-pesan]");
+  if (pesan){
+    var pid = pesan.dataset.pesan;
+    if (!chosen[pid]){ chosen[pid] = 1; }
+    sinkronBag();
+    sinkronKartu();
+    bukaPanel("");
+    return;
+  }
+
+  var q = e.target.closest("[data-q]");
+  if (q){ ubahQty(q.dataset.id, q.dataset.q === "+" ? 1 : -1); return; }
+
+  var ask = e.target.closest("[data-ask]");
+  if (ask){ bukaPanel(ask.dataset.ask); }
+});
+
+["nama","jenis","kota","catatan"].forEach(function(id){
+  document.getElementById(id).addEventListener("input", function(){
+    previewEl.textContent = isiPesan();
+  });
+});
+
+document.getElementById("openPanel").addEventListener("click", function(){ bukaPanel(""); });
+document.getElementById("openPanel2").addEventListener("click", function(){ bukaPanel(""); });
+document.getElementById("closePanel").addEventListener("click", tutupPanel);
+veil.addEventListener("click", tutupPanel);
+
+document.addEventListener("keydown", function(e){
+  var wadah = payEl.dataset.open === "true" ? payEl
+    : (panel.dataset.open === "true" ? panel : null);
+
+  if (e.key === "Escape"){
+    if (wadah === payEl){ tutupPay(); return; }
+    if (wadah === panel){ tutupPanel(); return; }
+  }
+  if (e.key !== "Tab" || !wadah){ return; }
+
+  var fokus = Array.prototype.filter.call(
+    wadah.querySelectorAll("button, input, select, textarea, a[href]"),
+    function(el){ return !el.disabled && el.offsetParent !== null; }
+  );
+  if (!fokus.length){ return; }
+  var awal = fokus[0], akhir = fokus[fokus.length - 1];
+  if (e.shiftKey && document.activeElement === awal){ e.preventDefault(); akhir.focus(); }
+  else if (!e.shiftKey && document.activeElement === akhir){ e.preventDefault(); awal.focus(); }
+});
+
+sendBtn.addEventListener("click", function(){
+  var nomor = WA_NUMBER.replace(/\D/g, "");
+  if (!nomor){ return; }
+  window.open("https://wa.me/" + nomor + "?text=" + encodeURIComponent(isiPesan()), "_blank", "noopener");
+});
+
+document.getElementById("copy").addEventListener("click", function(){
+  copiedMsg.hidden = true;
+  if (!navigator.clipboard || !navigator.clipboard.writeText){
+    copiedMsg.textContent = "Peramban ini tidak mendukung penyalinan otomatis. Pilih teks pada kotak isi pesan lalu salin manual.";
+    copiedMsg.hidden = false;
+    return;
+  }
+  navigator.clipboard.writeText(isiPesan()).then(function(){
+    copiedMsg.textContent = "Teks pesanan sudah tersalin.";
+    copiedMsg.hidden = false;
+    setTimeout(function(){ copiedMsg.hidden = true; }, 2600);
+  }).catch(function(){
+    copiedMsg.textContent = "Penyalinan ditolak peramban. Pilih teks pada kotak isi pesan lalu salin manual.";
+    copiedMsg.hidden = false;
+  });
+});
+
+var burger = document.getElementById("burger");
+var nav = document.getElementById("nav");
+burger.addEventListener("click", function(){
+  var buka = nav.classList.toggle("open");
+  burger.setAttribute("aria-expanded", String(buka));
+});
+nav.querySelectorAll("a").forEach(function(a){
+  a.addEventListener("click", function(){
+    nav.classList.remove("open");
+    burger.setAttribute("aria-expanded", "false");
+  });
+});
+
+/* lembar bayar: kode pesanan, QRIS, GoPay, bukti pembayaran */
+var payEl = document.getElementById("pay");
+var payBody = document.getElementById("payBody");
+var payThanks = document.getElementById("payThanks");
+var fileErr = document.getElementById("fileErr");
+var thumb = document.getElementById("thumb");
+var thumbImg = document.getElementById("thumbImg");
+var buktiInput = document.getElementById("bukti");
+var qrisImg = document.getElementById("qrisImg");
+var qrisFallback = document.getElementById("qrisFallback");
+var qrisDl = document.getElementById("qrisDl");
+var driveNote = document.getElementById("driveNote");
+var thanksNote = document.getElementById("thanksNote");
+var orderCode = "";
+var buktiFile = null;
+
+function rupiah(n){ return "Rp" + n.toLocaleString("id-ID"); }
+
+function varianDari(id){
+  for (var i = 0; i < DATA.length; i++){ if (DATA[i].id === id){ return DATA[i]; } }
+  return null;
+}
+
+function totalTagihan(){
+  if (totalBaris() === 0){ return null; }
+  var t = 0;
+  for (var id in chosen){
+    var p = varianDari(id);
+    if (!p || typeof p.harga !== "number"){ return null; }
+    t += p.harga * chosen[id];
+  }
+  return t;
+}
+
+function buatKode(){
+  var d = new Date();
+  var tgl = ("0" + d.getDate()).slice(-2) + ("0" + (d.getMonth() + 1)).slice(-2);
+  return "#CLM-" + tgl + "-" + (1000 + Math.floor(Math.random() * 9000));
+}
+
+function salin(teks, tombol){
+  if (!navigator.clipboard || !navigator.clipboard.writeText){
+    fileErr.textContent = "Peramban ini menolak penyalinan otomatis. Salin manual teks pada kotak isi pesan.";
+    fileErr.hidden = false;
+    return;
+  }
+  var label = tombol.textContent;
+  navigator.clipboard.writeText(teks).then(function(){
+    tombol.textContent = "Tersalin";
+    setTimeout(function(){ tombol.textContent = label; }, 1600);
+  }).catch(function(){
+    fileErr.textContent = "Penyalinan ditolak peramban. Salin manual.";
+    fileErr.hidden = false;
+  });
+}
+
+function pesanBukti(){
+  return isiPesan() + "\n\nKode pesanan: " + orderCode +
+    "\nBukti pembayaran saya lampirkan di chat ini.";
+}
+
+function bukaPay(){
+  if (!orderCode){ orderCode = buatKode(); }
+  if (panel.dataset.open === "true"){ tutupPanel(); }
+  document.getElementById("payCode").textContent = orderCode;
+  document.getElementById("thanksCode").textContent = orderCode;
+  var total = totalTagihan();
+  document.getElementById("payTotal").textContent =
+    totalBaris() === 0 ? "Belum ada varian dipilih" : (total === null ? "Belum dipasang" : rupiah(total));
+  document.getElementById("priceNote").hidden = total !== null;
+  document.getElementById("copyNominal").disabled = total === null;
+  document.getElementById("gopayNo").textContent = GOPAY || "[NOMOR GOPAY]";
+  document.getElementById("gopayRow").hidden = !GOPAY;
+  document.getElementById("copyGopay").disabled = !GOPAY;
+  payBody.hidden = false;
+  payThanks.hidden = true;
+  fileErr.hidden = true;
+  payEl.dataset.open = "true";
+  document.getElementById("closePay").focus();
+}
+
+function tutupPay(){
+  payEl.dataset.open = "false";
+  var balik = document.getElementById("openPanel");
+  if (balik && balik.focus){ balik.focus(); }
+}
+
+function tampilThanks(){
+  payBody.hidden = true;
+  payThanks.hidden = false;
+  thanksNote.hidden = true;
+  document.getElementById("thanksWa").focus();
+}
+
+function kirimWaBukti(tombol){
+  var nomor = WA_NUMBER.replace(/\D/g, "");
+  if (nomor){
+    window.open("https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesanBukti()), "_blank", "noopener");
+    return;
+  }
+  salin(pesanBukti(), tombol);
+  thanksNote.textContent = "Nomor WhatsApp admin belum dipasang di situs. Teks pesanan sudah tersalin, lampirkan fotonya di chat admin.";
+  thanksNote.hidden = false;
+}
+
+function qrisGagal(){
+  qrisImg.hidden = true;
+  qrisFallback.hidden = false;
+  qrisDl.hidden = true;
+}
+qrisImg.addEventListener("error", qrisGagal);
+qrisImg.addEventListener("load", function(){
+  if (!qrisImg.naturalWidth){ qrisGagal(); }
+});
+if (qrisImg.complete && !qrisImg.naturalWidth){ qrisGagal(); }
+
+function berkasKeBase64(file){
+  return new Promise(function(resolve, reject){
+    var r = new FileReader();
+    r.onload = function(){
+      var hasil = String(r.result);
+      resolve(hasil.indexOf(",") >= 0 ? hasil.split(",")[1] : hasil);
+    };
+    r.onerror = function(){ reject(new Error("berkas tidak bisa dibaca")); };
+    r.readAsDataURL(file);
+  });
+}
+
+buktiInput.addEventListener("change", function(){
+  var f = this.files && this.files[0];
+  fileErr.hidden = true;
+  buktiFile = null;
+  thumb.hidden = true;
+  if (!f){ return; }
+  if (["image/jpeg", "image/png", "image/webp"].indexOf(f.type) === -1){
+    fileErr.textContent = "Format berkas harus .jpg, .png, atau .webp.";
+    fileErr.hidden = false;
+    this.value = "";
+    return;
+  }
+  if (f.size > 5 * 1024 * 1024){
+    fileErr.textContent = "Ukuran berkas " + (f.size / 1024 / 1024).toFixed(1) + " MB, melebihi batas 5 MB. Perkecil dulu.";
+    fileErr.hidden = false;
+    this.value = "";
+    return;
+  }
+  buktiFile = f;
+  thumbImg.src = URL.createObjectURL(f);
+  document.getElementById("thumbName").textContent = f.name;
+  document.getElementById("thumbSize").textContent = (f.size / 1024).toFixed(0) + " KB";
+  thumb.hidden = false;
+});
+
+document.getElementById("sendBukti").addEventListener("click", function(){
+  var tombol = this;
+  fileErr.hidden = true;
+  if (totalBaris() === 0){
+    fileErr.textContent = "Tambahkan varian dari katalog dulu.";
+    fileErr.hidden = false;
+    return;
+  }
+  if (!buktiFile){
+    fileErr.textContent = "Pilih foto bukti pembayaran dulu.";
+    fileErr.hidden = false;
+    return;
+  }
+  if (!DRIVE_ENDPOINT){
+    driveNote.hidden = false;
+    tampilThanks();
+    return;
+  }
+
+  var total = totalTagihan();
+  var badan = null;
+
+  tombol.disabled = true;
+  tombol.textContent = "Mengunggah...";
+
+  berkasKeBase64(buktiFile)
+    .then(function(b64){
+      badan = new URLSearchParams();
+      badan.set("bukti64", b64);
+      badan.set("namaBerkas", buktiFile.name);
+      badan.set("tipeBerkas", buktiFile.type || "image/png");
+      badan.set("kode", orderCode);
+      badan.set("total", total === null ? "" : String(total));
+      badan.set("pesan", isiPesan());
+      return fetch(DRIVE_ENDPOINT, { method: "POST", body: badan });
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (!d || !d.ok){ throw new Error(d && d.error ? d.error : "ditolak server"); }
+      driveNote.hidden = true;
+      tampilThanks();
+    })
+    .catch(function(err){
+      fileErr.textContent = "Upload ke Drive gagal (" + err.message + "). Bukti tetap bisa dikirim lewat WhatsApp, tekan tombol Ingatkan admin.";
+      fileErr.hidden = false;
+    })
+    .then(function(){
+      tombol.disabled = false;
+      tombol.textContent = "Kirim bukti pembayaran";
+    });
+});
+
+document.getElementById("openPay").addEventListener("click", bukaPay);
+document.getElementById("closePay").addEventListener("click", tutupPay);
+document.getElementById("payVeil").addEventListener("click", tutupPay);
+document.getElementById("thanksClose").addEventListener("click", tutupPay);
+document.getElementById("thanksWa").addEventListener("click", function(){ kirimWaBukti(this); });
+document.getElementById("remindAdmin").addEventListener("click", function(){ kirimWaBukti(this); });
+document.getElementById("copyCode").addEventListener("click", function(){ salin(orderCode, this); });
+document.getElementById("copyNominal").addEventListener("click", function(){
+  var total = totalTagihan();
+  if (total !== null){ salin(String(total), this); }
+});
+document.getElementById("copyGopay").addEventListener("click", function(){
+  if (GOPAY){ salin(GOPAY, this); }
+});
+
+/* judul muncul perkata saat digulir */
+function pecahKata(el){
+  function jalan(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(n){
+      if (n.nodeType === 3){
+        var frag = document.createDocumentFragment();
+        n.nodeValue.split(/(\s+)/).forEach(function(bagian){
+          if (!bagian){ return; }
+          if (/^\s+$/.test(bagian)){ frag.appendChild(document.createTextNode(bagian)); return; }
+          var s = document.createElement("span");
+          s.className = "w";
+          s.textContent = bagian;
+          frag.appendChild(s);
+        });
+        node.replaceChild(frag, n);
+      } else if (n.nodeType === 1){
+        jalan(n);
+      }
+    });
+  }
+  jalan(el);
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  if (!window.gsap || !window.ScrollTrigger){ return; }
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches){ return; }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* gulir halus: Lenis disetir oleh ticker GSAP */
+  var lenis = null;
+  if (window.Lenis){
+    lenis = new Lenis({ duration: 1.05 });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    document.addEventListener("click", function(e){
+      var tautan = e.target.closest('a[href^="#"]');
+      if (!tautan){ return; }
+      var tujuan = document.querySelector(tautan.getAttribute("href"));
+      if (!tujuan){ return; }
+      e.preventDefault();
+      lenis.scrollTo(tujuan, { offset: -70 });
+      if (nav.classList.contains("open")){
+        nav.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  document.querySelectorAll(".lead h1, .profil h2, #pesan h2").forEach(function(judul){
+    pecahKata(judul);
+    gsap.from(judul.querySelectorAll(".w"), {
+      yPercent: 70,
+      opacity: 0,
+      duration: 0.55,
+      stagger: 0.045,
+      ease: "power2.out",
+      scrollTrigger: { trigger: judul, start: "top 85%", once: true }
+    });
+  });
+
+  /* kartu katalog: masuk bertahap, lalu angkat saat kursor di atasnya */
+  var kartu = document.querySelectorAll(".card");
+  if (kartu.length){
+    gsap.from(kartu, {
+      y: 28,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.07,
+      ease: "power2.out",
+      scrollTrigger: { trigger: "#katalog", start: "top 82%", once: true }
+    });
+
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches){
+      kartu.forEach(function(k){
+        var angkat = gsap.quickTo(k, "y", { duration: 0.3, ease: "power2.out" });
+        k.addEventListener("mouseenter", function(){ angkat(-6); });
+        k.addEventListener("mouseleave", function(){ angkat(0); });
+      });
+    }
+  }
+});
+
+renderRows();
+sinkronBag();
+</script>
+</body>
+</html>

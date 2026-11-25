@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "skills": {
+    "better-ui": {
+      "source": "jakubkrehel/skills",
+      "commit": "672ae44ace6aaed65b86cbb1e2fd6fbea0e79578",
+      "sourceType": "github",
+      "skillPath": "skills/better-ui/SKILL.md",
+      "computedHash": "e9e9bedb426428a6f9d86927b77f14b6acc3d348a7ec9552c071bc2bfb39ca65"
+    },
+    "improve": {
+      "source": "shadcn/improve",
+      "commit": "cac56e1ebd3c279aa9153616cfeac7b174ab90f9",
+      "sourceType": "github",
+      "skillPath": "skills/improve/SKILL.md",
+      "computedHash": "9e8fe9ea4f9a0e4155801d1624e38ca23798467bb88b447efaa5120f7b1fe802"
+    },
+    "improve-animations": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/improve-animations/SKILL.md",
+      "computedHash": "5c33add82a79754bec0d7ee3376525e24e77b34575d5ae29d0c204f730356eab"
+    },
+    "improve-ui": {
+      "source": "ibelick/ui-skills",
+      "commit": "1a2f2bf91b18365abc102b67400f48ab1046b449",
+      "sourceType": "github",
+      "skillPath": "skills/improve-ui/SKILL.md",
+      "computedHash": "7f913010ca7e6b5c224d928d4f2500438d7daacebb25f00e2f4df3bed513d51d"
+    }
+  }
+}
