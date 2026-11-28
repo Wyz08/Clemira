@@ -95,6 +95,25 @@
   .tile-full{height:clamp(460px,50vw,600px);display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(24px,3.4vw,38px) 0 clamp(18px,2.2vw,26px)}
   .tile-full .shot{width:100%;flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:center;margin-top:clamp(12px,2vw,22px);overflow:hidden}
   .tile-full .shot img{width:auto;max-width:min(100%,620px);height:100%;object-fit:contain;object-position:bottom;border-radius:16px 16px 0 0}
+  .tile-copy{display:contents}
+  .badge-bs{
+    justify-self:center;margin:0 auto 10px;padding:5px 11px;border-radius:999px;
+    background:#dde5d5;border:1px solid rgba(8,69,42,.16);
+    color:var(--green-deep);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  }
+  .btn-pesan{min-height:48px}
+  .links .btn-pesan{
+    min-height:48px;padding:0 26px;border-radius:10px;border:1px solid var(--green-deep);
+    background:var(--green-deep);color:#fff;font-size:.92rem;font-weight:600;text-decoration:none;
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:background-color 160ms var(--ease-out),border-color 160ms var(--ease-out);
+  }
+  .tile-full .tile-copy .badge-bs{order:0;margin:0 auto 8px;max-width:none;color:var(--green-deep)}
+  .tile-full .kicker{order:1}
+  .tile-full h2{order:2}
+  .tile-full .tile-copy p{order:3}
+  .tile-full .shot{order:4}
+  .tile-full .links{order:5}
   .tile h2{font-size:clamp(1.7rem,3.4vw,2.6rem);max-width:26ch}
   .tile p{margin:12px auto 0;max-width:46ch;color:var(--ink-2);font-size:1rem}
   .kicker{font-size:.78rem;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
@@ -141,11 +160,11 @@
   .dark .shot{margin:clamp(22px,3vw,34px) 0 0;display:flex;justify-content:center;align-items:flex-end;background:#fff;border-radius:14px 14px 0 0;padding:clamp(18px,2.4vw,28px) clamp(16px,2.4vw,26px) 0;min-height:clamp(260px,30vw,400px)}
   .dark .shot img{width:auto;max-width:min(100%,520px);max-height:clamp(260px,30vw,400px);object-fit:contain;object-position:bottom}
   .dark .shot-lebar{
-    margin:clamp(24px,3.4vw,38px) auto 0;max-width:860px;width:calc(100% - clamp(32px,7vw,56px));
-    background:#06301f;border-radius:14px;overflow:hidden;aspect-ratio:3/2;min-height:0;padding:0;display:block;
+    margin:clamp(24px,3.4vw,38px) auto 0;max-width:520px;width:calc(100% - clamp(32px,7vw,56px));
+    background:#06301f;border-radius:14px;overflow:hidden;aspect-ratio:1;min-height:0;padding:0;display:block;
   }
-  .dark .shot-lebar img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
-  .dark .cap-kecil{margin:10px auto 0;max-width:860px;width:calc(100% - clamp(32px,7vw,56px));text-align:left;font-size:.78rem;line-height:1.45;letter-spacing:.03em;color:#c3d3ba}
+  .dark .shot-lebar img{width:100%;height:100%;max-width:none;max-height:none;object-fit:contain}
+  .dark .cap-kecil{margin:10px auto 0;max-width:520px;width:calc(100% - clamp(32px,7vw,56px));text-align:left;font-size:.78rem;line-height:1.45;letter-spacing:.03em;color:#c3d3ba}
 
   /* strip angka */
   .figs{display:grid;grid-template-columns:repeat(4,1fr);margin:clamp(26px,4vw,44px) 0 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
@@ -281,6 +300,68 @@
     .foot ul li a{display:inline-block;padding-block:12px}
     .card .shot{height:210px}
   }
+  /* desktop: halaman diperlebar dan semua ukuran naik satu tingkat,
+     karena pada 1280px ke atas aset dan navigasi terbaca terlalu kecil */
+  @media (min-width:1024px){
+    :root{--pad:clamp(32px,3.2vw,56px)}
+    .wrap{width:min(1340px,100% - 2*var(--pad))}
+
+    .bar-in{min-height:72px;gap:24px}
+    .brand img{height:46px}
+    .brand b{font-size:1.12rem}
+    .nav{gap:34px;font-size:.95rem}
+    .pill{min-height:46px;padding:0 20px;font-size:.92rem}
+    .bag-n{min-width:21px;height:21px}
+    .burger{min-width:46px;min-height:46px}
+
+    .lead{padding:clamp(48px,5.4vw,96px) 0 clamp(24px,3vw,38px)}
+    .lead h1{font-size:clamp(3.4rem,5.2vw,5.6rem);max-width:22ch}
+    .lead p{font-size:1.22rem;max-width:52ch}
+    .links{gap:12px 28px;margin-top:28px}
+    .links .pill{min-height:50px;padding:0 28px;font-size:.95rem}
+
+    .tile-full{height:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+      align-items:center;column-gap:clamp(28px,3.4vw,56px);
+      text-align:left;padding:clamp(26px,2.8vw,42px)}
+    .tile-full .tile-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;min-width:0}
+    .tile-full .kicker{margin:0}
+    .tile-full h2{max-width:24ch;margin:0}
+    .tile-full .tile-copy p{margin:0;max-width:44ch}
+    .tile-full .links{grid-area:auto;justify-content:flex-start;margin:8px 0 0}
+    .tile-full .tile-copy .badge-bs{margin:0 0 8px}
+    .tile-full .shot{grid-area:auto;order:auto;align-self:center;align-items:center;height:clamp(320px,30vw,470px);margin:0;padding:0;overflow:visible}
+    .tile-full .shot img{max-width:100%;max-height:100%;height:100%;border-radius:0}
+    .tile h2{font-size:clamp(2.2rem,3.4vw,3.2rem)}
+    .tile p{font-size:1.08rem;max-width:52ch}
+
+    .grid{gap:24px}
+    .card .shot{height:clamp(240px,22vw,330px)}
+    .card .info{padding:24px;gap:11px}
+    .card .head h3{font-size:clamp(1.25rem,1.55vw,1.58rem)}
+    .card .badge{font-size:.72rem;padding:5px 11px}
+    .card .desc{font-size:.97rem}
+    .card .foot b{font-size:clamp(1.25rem,1.55vw,1.5rem)}
+    .card .pesan{min-height:48px;font-size:.92rem}
+
+    .figs b{font-size:clamp(1.8rem,2.2vw,2.4rem)}
+    .figs span{font-size:.78rem}
+
+    .dark h2{font-size:clamp(2.2rem,3.5vw,3.4rem);max-width:24ch}
+    .dark p{font-size:1.08rem;max-width:48ch}
+
+    .stages{padding:clamp(58px,6.4vw,104px) 0}
+    .stage-i h3{font-size:1.4rem}
+    .stage-i p{font-size:1rem;max-width:38ch}
+
+    .profil .intro{font-size:1.06rem}
+    .spek dt{font-size:.75rem}
+    .spek dd{font-size:1rem}
+
+    .foot{padding-top:clamp(48px,5vw,68px)}
+    .foot p{font-size:.94rem}
+    .foot ul{font-size:.94rem}
+  }
+
   @media (hover:hover){
     #openPanel:hover{background:#7f2323;border-color:#7f2323}
     .nav a:hover{color:var(--ink)}
@@ -291,6 +372,7 @@
     .card:hover{box-shadow:var(--shadow-border-hover)}
     .card:hover .shot img{transform:scale(1.03)}
     .card .pesan:hover{background:var(--green-deep);color:#fff}
+    .links .btn-pesan:hover{background:#063d24;border-color:#063d24;color:#fff}
     .step button:hover{color:var(--green-deep)}
     .step button[data-plus]:hover{background:#063d24;color:#fff}
     .mini:hover{border-color:var(--green);color:var(--green-deep)}
@@ -313,7 +395,7 @@
 
     <nav class="nav" id="nav" aria-label="Bagian halaman">
       <a href="#profil">Profil</a>
-      <a href="#asal">Asal nira</a>
+      <a href="#asal">Proses</a>
       <a href="#katalog">Katalog</a>
       <a href="#pesan">Cara pesan</a>
     </nav>
@@ -343,14 +425,17 @@
   <div class="wrap">
     <section class="stage">
       <div class="tile tile-full">
-        <p class="kicker">Gula Aren Liquid</p>
-        <h2>Tuang, aduk, selesai.</h2>
-        <p>Botol 1000 ml untuk es kopi susu dan minuman dingin. Takarnya cepat karena sudah cair.</p>
+        <div class="tile-copy">
+          <p class="badge-bs">Best seller</p>
+          <p class="kicker">Gula Aren Liquid</p>
+          <h2>Tuang, aduk, selesai.</h2>
+          <p>Botol 1000 ml untuk es kopi susu dan minuman dingin. Takarnya cepat karena sudah cair.</p>
+          <div class="links">
+            <button type="button" class="btn-pesan" data-order="cair-1000">Pesan aren botol</button>
+          </div>
+        </div>
         <div class="shot">
           <img src="./assets/gula-aren-liquid-1000ml.png" alt="Botol Clemira Gula Aren Liquid 1000 ml" width="408" height="612" fetchpriority="high">
-        </div>
-        <div class="links">
-          <button type="button" data-order="cair-1000">Pesan botol 1000 ml</button>
         </div>
       </div>
     </section>
@@ -370,15 +455,15 @@
       <div class="dark">
         <div class="wrap" style="width:min(760px,100%)">
           <h2>Dua kali penyaringan, satu rasa yang tinggal.</h2>
-          <p>Nira dimasak sampai mengental lalu disaring dua kali untuk membuang ampas dan kerak. Yang tersisa hanya rasa karamel dari nira.</p>
+          <p>Nira dimasak sampai mengental lalu disaring dua kali untuk membuang ampas dan kerak. Hasilnya gula aren yang lebih jernih, lembut, dengan aroma karamel alami yang terjaga.</p>
           <div class="links">
             <a href="#profil">Baca profil</a>
           </div>
         </div>
         <div class="shot shot-lebar">
-          <img src="./assets/proses-penyaringan.webp" alt="Ilustrasi penyaringan nira aren: cairan nira dituang lewat kain ke wajan di atas tungku kayu" width="1200" height="800" loading="lazy">
+          <img src="./assets/proses-penyaringan.jpg" alt="Gula aren blok hasil dua kali penyaringan, ditumpuk dalam mangkuk kayu" width="736" height="736" loading="lazy">
         </div>
-        <p class="cap-kecil">Ilustrasi proses penyaringan nira, bukan foto lokasi produksi Clemira.</p>
+        <p class="cap-kecil">Ilustrasi proses penyaringan nira tradisional (bukan dokumentasi lokasi produksi).</p>
       </div>
     </section>
 
@@ -386,18 +471,18 @@
       <div class="stages-grid">
         <article class="stage-i">
           <b class="num">01</b>
-          <h3>Penyadapan pagi</h3>
-          <p>Nira dipanen pagi hari saat rasanya masih bersih. Ditampung terlalu lama, rasanya berubah asam.</p>
+          <h3>Disadap pagi hari</h3>
+          <p>Nira dipanen setiap pagi saat kondisinya masih segar dan manis alami, sebelum terlalu lama terpapar udara dan berubah asam.</p>
         </article>
         <article class="stage-i">
           <b class="num">02</b>
-          <h3>Dimasak dan disaring</h3>
-          <p>Dimasak sampai mengental, disaring dua kali untuk membuang ampas dan kerak.</p>
+          <h3>Dimasak & disaring dua kali</h3>
+          <p>Diolah dengan api terjaga hingga mengental sempurna, lalu disaring dua kali agar bebas dari ampas dan kotoran halus.</p>
         </article>
         <article class="stage-i">
           <b class="num">03</b>
           <h3>Dikemas di Makassar</h3>
-          <p>Blok dicetak 400 g, bubuk masuk pouch zip-lock, cair ke botol PET 1000 ml.</p>
+          <p>Hadir dalam empat kemasan rapi sesuai kebutuhan, mulai dari blok, bubuk, botol cair, hingga cube.</p>
         </article>
       </div>
     </section>
@@ -405,8 +490,8 @@
     <section id="profil">
       <div class="profil">
         <div>
-          <h2>Nira dari Bone, <em>dikemas di Makassar</em>.</h2>
-          <p class="intro">Clemira Aren mengolah air nira aren dari penyadap di Kabupaten Bone menjadi gula aren tanpa pengawet dan tanpa pewarna. Penyaringan dua kali membuang ampas dan kerak, sisanya rasa karamel dari nira.</p>
+          <h2>Clemira Aren, <em>dikemas rapi di Makassar</em>.</h2>
+          <p class="intro">Clemira Aren menghadirkan gula aren murni dari air nira pilihan yang disadap langsung di Kabupaten Bone. Diolah tanpa pengawet dan tanpa pewarna, lalu disaring dua kali agar menghasilkan manis Aren yang murni tanpa pemanis buatan, aman, dan nikmat untuk Anda.</p>
           <dl class="spek">
             <div><dt>Nama usaha</dt><dd>Clemira Aren</dd></div>
             <div><dt>Lokasi produksi</dt><dd>Makassar, Sulawesi Selatan</dd></div>
@@ -427,10 +512,10 @@
 
     <section id="pesan" style="padding-bottom:clamp(30px,4vw,50px)">
       <div class="lead" style="padding-top:0">
-        <h2 style="font-size:clamp(1.6rem,3vw,2.3rem)">Pesan tanpa mengetik ulang.</h2>
-        <p>Tambahkan varian dari katalog, isi jumlah dan kota tujuan, lalu kirim lewat WhatsApp. Rincian produk tersusun otomatis.</p>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.3rem)">Pesan praktis langsung di Web & Whatsapp.</h2>
+        <p>Cukup pilih varian dari katalog, atur jumlahnya, lalu isi kota tujuan. Rincian pesanan Anda akan langsung tersusun rapi dan siap dikirim.</p>
         <div class="links">
-          <button type="button" id="openPanel2">Buka daftar pesanan</button>
+          <button type="button" id="openPanel2">Lihat daftar pesanan</button>
           <a href="https://instagram.com/Clemira_Aren" target="_blank" rel="noopener">Instagram @Clemira_Aren</a>
         </div>
       </div>
@@ -444,12 +529,12 @@
     <div class="foot-in">
       <div>
         <h2>Clemira Aren</h2>
-        <p>Gula aren dari air nira Kabupaten Bone, diolah dan dikemas di Makassar. Tanpa pengawet dan tanpa pewarna.</p>
+        <p>Gula aren dari Kabupaten Bone, diolah dan dikemas higienis di Makassar. Tanpa pengawet dan tanpa pewarna.</p>
       </div>
       <div>
         <ul>
           <li><a href="#katalog">Katalog</a></li>
-          <li><a href="#asal">Tahap pengolahan</a></li>
+          <li><a href="#asal">Proses penyaringan</a></li>
           <li><a href="#profil">Profil dan legalitas</a></li>
           <li><a href="#pesan">Cara pesan</a></li>
         </ul>
@@ -671,7 +756,7 @@ function renderRows(){
             '<button type="button" data-q="+" data-id="' + p.id + '" aria-label="Tambah jumlah ' + p.nama + '" data-plus>+</button>' +
           '</div>' +
         '</div>' +
-        '<button type="button" class="pesan" data-pesan="' + p.id + '">Pesan ' + p.nama.replace('Gula Aren ', '') + '</button>' +
+        '<button type="button" class="pesan" data-pesan="' + p.id + '">Pesan</button>' +
       '</div>' +
     '</article>';
   }).join("");
